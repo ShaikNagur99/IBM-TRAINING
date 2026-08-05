@@ -1,0 +1,51 @@
+<div class="login-container">
+
+  <h2>ABC Bank Login</h2>
+
+  <form [formGroup]="loginForm">
+
+    <label>Username</label>
+
+    <input
+      type="text"
+      formControlName="username">
+
+    @if(loginForm.get('username')?.touched &&
+    loginForm.get('username')?.errors?.['required']){
+
+    <p class="error">
+
+      Username is required
+
+    </p>
+
+    }
+
+    <label>Password</label>
+
+    <input
+      type="password"
+      formControlName="password">
+
+    @if(loginForm.get('password')?.touched &&
+    loginForm.get('password')?.errors?.['required']){
+
+    <p class="error">
+
+      Password is required
+
+    </p>
+
+    }
+
+    <button
+      type="button"
+      (click)="login()">
+
+      Login
+
+    </button>
+
+  </form>
+
+</div>

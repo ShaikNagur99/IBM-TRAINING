@@ -1,0 +1,141 @@
+<h2>Money Transfer</h2>
+
+<form [formGroup]="transferForm">
+
+  <label>
+
+    Destination Account
+
+  </label>
+
+  <br>
+
+  <input
+    type="text"
+    formControlName="accountNumber">
+
+  @if(transferForm.get('accountNumber')?.errors?.['required']){
+
+  <p style="color:red">
+
+    Account Number Required
+
+  </p>
+
+  }
+
+  @if(transferForm.get('accountNumber')?.errors?.['sameAccount']){
+
+  <p style="color:red">
+
+    Cannot transfer to your own account
+
+  </p>
+
+  }
+
+  <br>
+
+  <label>
+
+    Transaction Type
+
+  </label>
+
+  <br>
+
+  <input
+    type="radio"
+    value="Deposit"
+    formControlName="transactionType">
+
+  Deposit
+
+  <input
+    type="radio"
+    value="Withdraw"
+    formControlName="transactionType">
+
+  Withdraw
+
+  <br><br>
+
+  <label>
+
+    Amount
+
+  </label>
+
+  <br>
+
+  <input
+    type="number"
+    formControlName="amount">
+
+  @if(transferForm.get('amount')?.errors?.['required']){
+
+  <p style="color:red">
+
+    Amount Required
+
+  </p>
+
+  }
+
+  @if(transferForm.get('amount')?.errors?.['min']){
+
+  <p style="color:red">
+
+    Minimum Transfer Amount ₹100
+
+  </p>
+
+  }
+
+  <br>
+
+  <button
+    type="button"
+    (click)="submitTransaction()">
+
+    Submit
+
+  </button>
+
+</form>
+
+<hr>
+
+<h2>
+
+  Transaction History
+
+</h2>
+
+<table>
+
+  <tr>
+
+    <th>Date</th>
+
+    <th>Type</th>
+
+    <th>Amount</th>
+
+  </tr>
+
+  @for(t of bank.transactions;track t){
+
+  <tr>
+
+    <td>{{t.date}}</td>
+
+    <td>{{t.type}}</td>
+
+    <td>{{t.amount}}</td>
+
+  </tr>
+
+  }
+
+</table>
