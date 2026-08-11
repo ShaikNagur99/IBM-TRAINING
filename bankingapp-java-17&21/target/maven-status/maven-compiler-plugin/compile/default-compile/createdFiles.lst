@@ -1,0 +1,4 @@
+com\example\bankingapp\BankingApp.class
+com\example\bankingapp\Transaction.class
+com\example\bankingapp\Account.class
+com\example\bankingapp\BankingService.class
