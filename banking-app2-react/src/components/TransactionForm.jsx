@@ -14,6 +14,7 @@ function TransactionForm({ onTransaction }) {
 
   return (
     <form className="transaction-form" onSubmit={submit}>
+      <h3>New Transaction</h3>
       <div className="transaction-inputs">
         <select value={type} onChange={(e) => setType(e.target.value)}>
           <option value="Deposit">Deposit</option>
